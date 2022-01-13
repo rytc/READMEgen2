@@ -1,7 +1,9 @@
 const md = require("markdown-it")();
 
 export class ReadmeOutput {
-    constructor() {
+    constructor(outputTag) {
+        this.outputTag = outputTag;
+
         this.projectTitle = "Project Title";
         this.description = ""; 
         this.installation = "";
@@ -11,6 +13,10 @@ export class ReadmeOutput {
         this.tests = "";
         this.githubURL = "";
         this.email = "";
+    }
+
+    update() {
+        document.getElementById(this.outputTag).innerHTML = this.render();
     }
 
     render() {
