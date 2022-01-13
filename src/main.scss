@@ -5,6 +5,10 @@ input, textarea, select {
     padding: 0.5em;
 }
 
+hr {
+    margin-bottom: 2em;
+}
+
 body.light {
     $border-bottom-color : hsla(210,18%,87%,1); 
 
@@ -86,7 +90,11 @@ body.light {
 }
 
 body.dark {
-    $border-bottom-color : #21262d; 
+    $border-bottom-color : rgb(55, 62, 71); 
+
+    hr {
+        border-top: $border-bottom-color;
+    }
 
     background-color: #111;
     color: #c9d1d9;
@@ -99,7 +107,7 @@ body.dark {
     input, textarea, select {
         background-color: rgb(59,59,59);
         color: #c9d1d9;
-        border-color: rgb(205, 217, 229);
+        border: 1px solid rgb(205, 217, 229);
     }
 
     a {
