@@ -127,7 +127,10 @@ async function run() {
         editor.style.fontFamily = "monospace";
         editor.textContent = readmeOutput.markdown;
         editor.addEventListener('input', (event) => {
-            document.getElementById('readme_output').innerHTML = md.render(event.target.innerHTML);
+            event.preventDefault();
+            let output = document.getElementById('readme_output');
+            output.innerHTML = md.render(event.target.value);
+
         });
 
         targetDiv.append(title);
