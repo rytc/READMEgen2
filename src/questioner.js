@@ -19,6 +19,8 @@ class QuestionerHandler {
     onChange(event) {
         let q = this.questions[this.qIndex];
         let value = document.getElementById(this.getQuestionId()).value;
+        let alert = document.getElementById('alert');
+        alert.style.display = "none";
         q.onChange(value);
         this.onChangeCallback(event);
     }
@@ -27,12 +29,26 @@ class QuestionerHandler {
         event.preventDefault();
         let q = this.questions[this.qIndex];
         let value = document.getElementById(this.getQuestionId()).value;
+
+        if(q.type === 'choice') {
+            let select = document.getElementById(this.getQuestionId());
+            value = select.options[select.selectedIndex].value;
+        }
         q.onChange(value)
+
+        if(value.length == 0) {
+            let alert = document.getElementById('alert');
+            alert.innerHTML = "Must enter a value";
+            alert.style.display = "";
+            return;
+        }
+
         this.qIndex++;
         document.getElementById("question_col").innerHTML = "";
         if(this.qIndex >= this.questions.length) {
             this.onDone();
         } else {
+            
             this.renderQuestion();
         }
     }
@@ -44,7 +60,7 @@ class QuestionerHandler {
         title.innerHTML = q.question;
         let btn = document.createElement('button');
         btn.innerHTML = "Next";
-        btn.className = 'btn btn-primary';
+        btn.className = 'btn btn-primary m-2';
         btn.addEventListener('click', this.onSubmit)
 
         let form = null;
@@ -58,10 +74,13 @@ class QuestionerHandler {
             form.rows = 5;
         } else if(q.type === 'choice') {
             form = document.createElement('select');
-            let choice = document.createElement('option');
-            choice.value = 'MIT';
-            choice.name = "MIT";
-            form.append(choice);
+            console.log(q.choices);
+            q.choices.forEach(choice => {
+                let choiceOpt = document.createElement('option');
+                choiceOpt.value = choice;
+                choiceOpt.textContent = choice;
+                form.append(choiceOpt);
+            })
         }
 
         if(form) {

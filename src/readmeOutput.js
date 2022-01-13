@@ -13,6 +13,8 @@ export class ReadmeOutput {
         this.tests = "";
         this.githubURL = "";
         this.email = "";
+
+        this.markdown = "";
     }
 
     update() {
@@ -20,9 +22,7 @@ export class ReadmeOutput {
     }
 
     render() {
-        return md.render(`
-
-# ${this.projectTitle}
+        this.markdown = `# ${this.projectTitle}
 
 ## Description
 ${this.description}
@@ -54,7 +54,8 @@ ${this.tests}
 - GitHub: [${this.githubURL}](${this.githubURL})
 - Email: [${this.email}](${this.email})
 
-`);
+`;
+        return md.render(this.markdown);
     }
 
 
