@@ -5,6 +5,20 @@ import axios from "axios";
 
 const md = require("markdown-it")();
 
+document.getElementById("toggle_mode").addEventListener('click', (event) => {
+    if(event.target.innerHTML == "Light Mode") {
+        let body = document.querySelector('body');
+        body.className = "light";
+        event.target.className = "btn btn-dark";
+        event.target.innerHTML = "Dark Mode";
+    } else {
+        let body = document.querySelector('body');
+        body.className = "dark";
+        event.target.className = "btn btn-light";
+        event.target.innerHTML = "Light Mode";
+    }
+});
+
 async function run() {
 
     let licenses = [];

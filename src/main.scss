@@ -1,5 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
+input, textarea, select {
+    border-radius: 6px;
+    padding: 0.5em;
+}
+
 body.light {
     $border-bottom-color : hsla(210,18%,87%,1); 
 
@@ -7,7 +12,7 @@ body.light {
 
     .row > * {
         background-color: white;
-        border-radius: 1em;
+        border-radius: 6px;
     }
 
     div.github-readme {
@@ -73,6 +78,99 @@ body.light {
             font-family: monospace;
             font-size: 12px;
             background-color: rgba(175,184,193,0.2);
+            color: black;
+            padding: .2em .4em;
+            font-size: 85%;
+        }
+    }
+}
+
+body.dark {
+    $border-bottom-color : #21262d; 
+
+    background-color: #111;
+    color: #c9d1d9;
+
+    .row > * {
+        background-color: rgb(34,39,46);
+        border-radius: 6px;
+    }
+
+    input, textarea, select {
+        background-color: rgb(59,59,59);
+        color: #c9d1d9;
+        border-color: rgb(205, 217, 229);
+    }
+
+    a {
+        color: #58a6ff;
+    }
+
+    div.github-readme {
+        // https://github.com/sindresorhus/github-markdown-css/blob/main/github-markdown-light.css
+        b,strong {
+            font-weight: 600;
+        }
+
+
+        
+        h1 {
+            margin: 0.67em 0;
+            font-weight: 600;
+            padding-bottom: 0.3em;
+            font-size: 2em;
+            border-bottom: 1px solid $border-bottom-color;
+
+        }
+
+        h1, h2, h3, h5, h4, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+
+        h2 {
+            padding-bottom: 0.3em;
+            font-size: 1.5em;
+            border-bottom: 1px solid $border-bottom-color;
+        }
+
+        h3 {
+            font-size: 1.25em;
+        }
+
+        h4 {
+            font-size: 1em;
+        }
+
+        h5 {
+            font-weight: 0.875em; 
+        }
+
+        h6 {
+            font-size: 0.85em;
+            color: #57606A;
+        }
+
+        blockquote {
+            margin: 0;
+            padding: 0 1em;
+            color: #57606A;
+            border-left: 0.25em solid #d0d7de;
+        }
+
+        ul,ol {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 2em;
+        }
+
+
+        tt, code, pre {
+            font-family: monospace;
+            font-size: 12px;
+            background-color: rgba(110,118,129,0.4);
             color: black;
             padding: .2em .4em;
             font-size: 85%;
